@@ -11,29 +11,29 @@ from cindergrace_common.ui.gradio import (
 
 class TestCSSVariables:
     def test_default_values(self):
-        vars = CSSVariables()
-        assert vars.blue_dark == "#1E5AA8"
-        assert vars.max_width == "1200px"
-        assert vars.font_size_base == "17px"
+        css_vars = CSSVariables()
+        assert css_vars.blue_dark == "#1E5AA8"
+        assert css_vars.max_width == "1200px"
+        assert css_vars.font_size_base == "17px"
 
     def test_custom_values(self):
-        vars = CSSVariables(blue_dark="#FF0000", max_width="800px")
-        assert vars.blue_dark == "#FF0000"
-        assert vars.max_width == "800px"
+        css_vars = CSSVariables(blue_dark="#FF0000", max_width="800px")
+        assert css_vars.blue_dark == "#FF0000"
+        assert css_vars.max_width == "800px"
         # Unchanged defaults
-        assert vars.blue_light == "#7CC8FF"
+        assert css_vars.blue_light == "#7CC8FF"
 
     def test_to_css_vars(self):
-        vars = CSSVariables()
-        css = vars.to_css_vars()
+        css_vars = CSSVariables()
+        css = css_vars.to_css_vars()
         assert ":root {" in css
         assert "--cg-blue-dark: #1E5AA8" in css
         assert "--cg-max-width: 1200px" in css
         assert "--cg-font-size-base: 17px" in css
 
     def test_to_css_vars_custom(self):
-        vars = CSSVariables(max_width="900px")
-        css = vars.to_css_vars()
+        css_vars = CSSVariables(max_width="900px")
+        css = css_vars.to_css_vars()
         assert "--cg-max-width: 900px" in css
 
 
@@ -68,8 +68,8 @@ class TestGradioTheme:
         assert ".my-class { color: red; }" in css
 
     def test_css_custom_variables(self):
-        vars = CSSVariables(max_width="800px")
-        theme = GradioTheme(variables=vars)
+        css_vars = CSSVariables(max_width="800px")
+        theme = GradioTheme(variables=css_vars)
         css = theme.css()
         assert "--cg-max-width: 800px" in css
 
@@ -120,9 +120,9 @@ class TestBuildHeader:
 
 class TestDefaultCSSVariables:
     def test_returns_css_variables(self):
-        vars = default_css_variables()
-        assert isinstance(vars, CSSVariables)
-        assert vars.blue_dark == "#1E5AA8"
+        css_vars = default_css_variables()
+        assert isinstance(css_vars, CSSVariables)
+        assert css_vars.blue_dark == "#1E5AA8"
 
 
 class TestLogoSVG:
