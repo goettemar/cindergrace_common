@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cindergrace-common"
-version = "0.2.0"
+version = "0.3.0"
 description = "Shared utilities for Cindergrace applications"
 readme = "README.md"
 license = {text = "MIT"}
@@ -29,14 +29,18 @@ dependencies = [
 gradio = [
     "gradio>=4.0.0",
 ]
+secrets = [
+    "keyring>=24.0.0",
+]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
+    "keyring>=24.0.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/cindergrace/cindergrace-common"
-Repository = "https://github.com/cindergrace/cindergrace-common"
+Homepage = "https://github.com/goettemar/cindergrace_common"
+Repository = "https://github.com/goettemar/cindergrace_common"
 
 [tool.setuptools.packages.find]
 where = ["src"]

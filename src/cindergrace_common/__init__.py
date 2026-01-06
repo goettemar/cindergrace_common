@@ -42,8 +42,14 @@ from cindergrace_common.ui.gradio import (
     build_header,
     default_css_variables,
 )
+from cindergrace_common.secrets import (
+    SecretStore,
+    SecretStoreWarning,
+    get_secret,
+    set_secret,
+)
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = [
     # Config
@@ -87,4 +93,9 @@ __all__ = [
     "LOGO_SVG",
     "build_header",
     "default_css_variables",
+    # Secrets
+    "SecretStore",
+    "SecretStoreWarning",
+    "get_secret",
+    "set_secret",
 ]
