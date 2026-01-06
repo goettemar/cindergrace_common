@@ -1,6 +1,5 @@
 """Tests for config module."""
 
-import os
 import pytest
 from cindergrace_common.config import env_str, env_int, env_bool, BaseConfig
 

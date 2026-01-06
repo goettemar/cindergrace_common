@@ -1,6 +1,5 @@
 """Tests for Gradio UI module."""
 
-import pytest
 from cindergrace_common.ui.gradio import (
     CSSVariables,
     GradioTheme,

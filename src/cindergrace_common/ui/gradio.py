@@ -7,7 +7,6 @@ Provides consistent styling across all Cindergrace Gradio apps with:
 """
 
 from dataclasses import dataclass, field
-from typing import Any
 
 
 # Cindergrace Logo SVG (48x48 viewBox, scalable)

@@ -1,8 +1,5 @@
 """Tests for state module."""
 
-import json
-import pytest
-from pathlib import Path
 from cindergrace_common.state import JSONStore, XDGStateStore, merge_defaults
 
 

@@ -39,7 +39,7 @@ class SecurityMixin:
     # Default settings
     DEFAULT_ALLOW_REMOTE: bool = False
     LOCALHOST: str = "127.0.0.1"
-    ALL_INTERFACES: str = "0.0.0.0"
+    ALL_INTERFACES: str = "0.0.0.0"  # nosec B104 - intentional, requires explicit ALLOW_REMOTE=1
 
     @classmethod
     def _security_key(cls, key: str) -> str:

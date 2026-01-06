@@ -1,11 +1,8 @@
 """Tests for logging setup module."""
 
 import logging
-import sys
 from io import StringIO
-from pathlib import Path
 
-import pytest
 from cindergrace_common.logging_setup import (
     ColoredFormatter,
     get_logger,
@@ -84,7 +81,7 @@ class TestSetupLogging:
 
     def test_module_levels(self):
         stream = StringIO()
-        logger = setup_logging(
+        setup_logging(
             "test_module_levels",
             stream=stream,
             colored=False,
@@ -134,7 +131,7 @@ class TestGetLogger:
         assert logger.name == "my.module"
 
     def test_child_logger(self):
-        parent = setup_logging("parent_app")
+        setup_logging("parent_app")
         child = get_logger("parent_app.submodule")
         assert child.name == "parent_app.submodule"
 

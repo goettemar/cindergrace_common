@@ -20,7 +20,6 @@ Environment Variables:
     CINDERGRACE_BRANDING_PATH - Override default branding assets location
 """
 
-import os
 from pathlib import Path
 
 from cindergrace_common.config import env_str

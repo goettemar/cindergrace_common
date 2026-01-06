@@ -12,7 +12,6 @@ Priority order:
 import logging
 import os
 import warnings
-from typing import Callable
 
 # Try to import keyring, but don't fail if not available
 try:

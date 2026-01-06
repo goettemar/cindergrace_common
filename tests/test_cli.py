@@ -1,7 +1,6 @@
 """Tests for CLI module."""
 
 import argparse
-import pytest
 from cindergrace_common.cli import ServerArgs, add_server_args, resolve_host
 
 

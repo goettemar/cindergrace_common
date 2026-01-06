@@ -1,7 +1,7 @@
 """Tests for i18n module."""
 
 import pytest
-from cindergrace_common.i18n import I18nManager, load_translations
+from cindergrace_common.i18n import I18nManager
 
 
 class TestI18nManager:

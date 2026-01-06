@@ -1,6 +1,5 @@
 """Tests for security module."""
 
-import pytest
 from cindergrace_common.config import BaseConfig
 from cindergrace_common.security import SecurityMixin
 
