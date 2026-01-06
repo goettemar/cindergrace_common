@@ -71,3 +71,4 @@ token = secrets.get("API_TOKEN")       # Retrieves from Keyring
 ## License
 
 MIT
+
