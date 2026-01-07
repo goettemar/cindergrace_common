@@ -12,6 +12,7 @@ Provides common patterns for:
 - Logging setup
 - Gradio UI theming
 - Path sanitization
+- Git repository backups
 """
 
 from cindergrace_common.config import BaseConfig, env_bool, env_int, env_str
@@ -48,8 +49,16 @@ from cindergrace_common.secrets import (
     get_secret,
     set_secret,
 )
+from cindergrace_common.backup import (
+    BackupInfo,
+    create_git_mirror_backup,
+    delete_old_backups,
+    get_latest_backup,
+    list_backups,
+    restore_from_backup,
+)
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 __all__ = [
     # Config
@@ -98,4 +107,11 @@ __all__ = [
     "SecretStoreWarning",
     "get_secret",
     "set_secret",
+    # Backup
+    "BackupInfo",
+    "create_git_mirror_backup",
+    "delete_old_backups",
+    "get_latest_backup",
+    "list_backups",
+    "restore_from_backup",
 ]
