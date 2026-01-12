@@ -9,6 +9,7 @@ from cindergrace_common.utils.paths import (
     safe_join,
     sanitize_filename,
 )
+from cindergrace_common.utils.datetime import generate_id, utcnow
 
 __all__ = [
     "retry_on_failure",
@@ -19,4 +20,7 @@ __all__ = [
     "resolve_safe_path",
     "safe_join",
     "sanitize_filename",
+    # DateTime utilities
+    "generate_id",
+    "utcnow",
 ]
