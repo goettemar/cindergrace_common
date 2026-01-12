@@ -1,5 +1,8 @@
 # Cindergrace Common
 
+**Status:** Final
+
+
 > **Internal Use Only** - This repository is public solely for integration with free-tier code analysis tools (Codacy). It is not intended for external use, contribution, or distribution. No support is provided.
 
 Shared utilities for Cindergrace applications.
