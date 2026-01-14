@@ -59,7 +59,23 @@ from cindergrace_common.backup import (
     restore_from_backup,
 )
 
-__version__ = "0.4.0"
+# OpenRouter is optional (requires httpx)
+try:
+    from cindergrace_common.openrouter import (
+        OpenRouterClient,
+        OpenRouterResponse,
+        OPENROUTER_MODELS,
+        DEFAULT_MODEL as OPENROUTER_DEFAULT_MODEL,
+    )
+    _OPENROUTER_AVAILABLE = True
+except ImportError:
+    OpenRouterClient = None  # type: ignore
+    OpenRouterResponse = None  # type: ignore
+    OPENROUTER_MODELS = {}
+    OPENROUTER_DEFAULT_MODEL = ""
+    _OPENROUTER_AVAILABLE = False
+
+__version__ = "0.5.0"
 
 __all__ = [
     # Config
@@ -118,4 +134,9 @@ __all__ = [
     "get_latest_backup",
     "list_backups",
     "restore_from_backup",
+    # OpenRouter
+    "OpenRouterClient",
+    "OpenRouterResponse",
+    "OPENROUTER_MODELS",
+    "OPENROUTER_DEFAULT_MODEL",
 ]
