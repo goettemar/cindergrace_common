@@ -59,7 +59,7 @@ from cindergrace_common.backup import (
     restore_from_backup,
 )
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 __all__ = [
     # Config

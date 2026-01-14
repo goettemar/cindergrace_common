@@ -20,8 +20,13 @@ Usage:
             return cls.env_int("MYAPP_CUSTOM", 100)
 """
 
+from __future__ import annotations
+
 import os
-from typing import TypeVar
+from typing import TYPE_CHECKING, TypeVar
+
+if TYPE_CHECKING:
+    from cindergrace_common.state import XDGStateStore
 
 T = TypeVar("T")
 
@@ -139,3 +144,53 @@ class BaseConfig:
             Dict mapping env var names to descriptions
         """
         return {}
+
+    @classmethod
+    def get_port(
+        cls,
+        state_store: XDGStateStore | None = None,
+        default: int = 7860,
+    ) -> int:
+        """Get server port with priority: ENV > State > Default.
+
+        This provides a consistent pattern for port configuration across apps:
+        1. Environment variable ({APP_PREFIX}_PORT) has highest priority (deployment)
+        2. Persistent state from XDGStateStore (user preference from GUI)
+        3. Hardcoded default as fallback
+
+        Args:
+            state_store: Optional XDGStateStore instance for persistent settings.
+                        If provided, checks state["port"] as second priority.
+            default: Fallback port if nothing else is configured.
+
+        Returns:
+            Port number to use for server.
+
+        Example:
+            class Config(BaseConfig):
+                APP_PREFIX = "NETMAN"
+
+            store = XDGStateStore(app_name="netman", defaults={"port": 7863})
+            port = Config.get_port(state_store=store, default=7863)
+        """
+        # 1. ENV-Var has highest priority (deployment/override)
+        env_key = cls.prefixed_key("PORT")
+        env_value = os.environ.get(env_key)
+        if env_value is not None:
+            try:
+                return int(env_value)
+            except ValueError:
+                pass  # Fall through to next priority
+
+        # 2. Persistent state (user preference from GUI)
+        if state_store is not None:
+            state = state_store.load()
+            port_value = state.get("port")
+            if port_value is not None:
+                try:
+                    return int(port_value)
+                except (ValueError, TypeError):
+                    pass  # Fall through to default
+
+        # 3. Default
+        return default
